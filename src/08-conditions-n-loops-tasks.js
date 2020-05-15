@@ -27,8 +27,34 @@
  *  21 => 'Fizz'
  *
  */
-function getFizzBuzz(/* num */) {
-  throw new Error('Not implemented');
+function getFizzBuzz(num) {
+  // const arr = [];
+  // for (let i = 1; i <= num; i += 1) {
+  //   let str = '';
+  //   if ((i % 3 !== 0) && (i % 5 !== 0)) {
+  //     arr.push(i);
+  //   } else {
+  //     if (i % 3 === 0) {
+  //       str += 'Fizz';
+  //     }
+  //     if (i % 5 === 0) {
+  //       str += 'Buzz';
+  //     }
+  //     arr.push(str);
+  //   }
+  // }
+  // return arr;
+  let result;
+  if (num % 15 === 0) {
+    result = 'FizzBuzz';
+  } else if (num % 3 === 0) {
+    result = 'Fizz';
+  } else if (num % 5 === 0) {
+    result = 'Buzz';
+  } else {
+    result = num;
+  }
+  return result;
 }
 
 
@@ -80,8 +106,18 @@ function getSumBetweenNumbers(/* n1, n2 */) {
  *   10,1,1   =>  false
  *   10,10,10 =>  true
  */
-function isTriangle(/* a, b, c */) {
-  throw new Error('Not implemented');
+function isTriangle(a, b, c) {
+  let res;
+  if (a > b && a > c && a >= b + c) {
+    res = false;
+  } else if (b > a && b > c && b >= a + c) {
+    res = false;
+  } else if (c > a && c > b && c >= a + b) {
+    res = false;
+  } else {
+    res = true;
+  }
+  return res;
 }
 
 
