@@ -387,7 +387,7 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
+function isBracketsBalanced(str) {
   // const brackets = ['[]', '()', '{}', '<>'];
   // let newStr = str;
   // for (let i = 0; i < newStr.length / 2; i += 1) {
@@ -398,7 +398,18 @@ function isBracketsBalanced(/* str */) {
   //   }
   // }
   // return newStr === '';
-  throw new Error('Not implemented');
+  const open = ['[', '(', '{', '<'];
+  const close = [']', ')', '}', '>'];
+  const res = [];
+  for (let i = 0; i < str.length; i += 1) {
+    if (open.includes(str[i])) res.push(str[i]);
+    else {
+      const closeInd = close.indexOf(str[i]);
+      const openInd = open.indexOf(res.pop());
+      if (closeInd !== openInd) return false;
+    }
+  }
+  return res.length === 0;
 }
 
 
@@ -439,7 +450,7 @@ function toNaryString(num, n) {
  *   ['/web/assets/style.css', '/.bin/mocha',  '/read.me'] => '/'
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
-function getCommonDirectoryPath(/* pathes */) {
+function getCommonDirectoryPath(pathes) {
   // let array = pathes.map((item) => {
   //   return item.split('/');
   // });
@@ -452,7 +463,13 @@ function getCommonDirectoryPath(/* pathes */) {
   //     break;
   //   }
   // }
-  throw new Error('Not implemented');
+  let res = pathes[0];
+  for (let i = 1; i < pathes.length; i += 1) {
+    for (let j = 0; j < res.length; j += 1) {
+      if (res[j] !== pathes[i][j]) res = res.substring(0, j);
+    }
+  }
+  return res.substring(0, res.lastIndexOf('/') + 1);
 }
 
 
@@ -509,22 +526,26 @@ function getMatrixProduct(/* m1, m2 */) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(/* position */) {
-  // let res;
-  // for (let i = 0; i < position.length; i += 1) {
-  //   if ((position[i][0] === position[i][1] === position[i][2])
-  //    || (position[i][0] === position[i + 1][0] === position[i + 2][0] && i === 0)
-  //     || (position[i][1] === position[i + 1][1] === position[i + 2][1] && i === 0)
-  //      || (position[i][2] === position[i + 1][2] === position[i + 2][2] && i === 0)) {
-  //     // res = position[i][0];
-  //     res = 'X';
-  //     break;
-  //   } else {
-  //     res = undefined;
-  //   }
-  // }
-  // return res;
-  throw new Error('Not implemented');
+function evaluateTicTacToePosition(position) {
+  for (let i = 0; i < 3; i += 1) {
+    if (position[i][0] === position[i][1]
+      && position[i][1] === position[i][2]) {
+      if (position[i][0]) return position[i][0];
+    }
+  }
+  for (let i = 0; i < 3; i += 1) {
+    if (position[0][i] === position[1][i]
+      && position[1][i] === position[2][i]) {
+      if (position[0][i]) return position[0][i];
+    }
+  }
+  if (position[0][0] === position[1][1] && position[1][1] === position[2][2]) {
+    if (position[1][1]) return position[1][1];
+  }
+  if (position[0][2] === position[1][1] && position[1][1] === position[2][0]) {
+    if (position[1][1]) return position[1][1];
+  }
+  return undefined;
 }
 
 
