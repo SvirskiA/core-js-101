@@ -351,8 +351,18 @@ function isCreditCardNumber(ccn) {
  *   10000 ( 1+0+0+0+0 = 1 ) => 1
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
-function getDigitalRoot(/* num */) {
-  throw new Error('Not implemented');
+function getDigitalRoot(num) {
+  const arr = num.toString().split('');
+  let sum = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    sum += +arr[i];
+  }
+  let result = 0;
+  const stringSum = sum.toString().split('');
+  for (let j = 0; j < stringSum.length; j += 1) {
+    result += +stringSum[j];
+  }
+  return result;
 }
 
 
@@ -378,6 +388,16 @@ function getDigitalRoot(/* num */) {
  *   '{[(<{[]}>)]}' = true
  */
 function isBracketsBalanced(/* str */) {
+  // const brackets = ['[]', '()', '{}', '<>'];
+  // let newStr = str;
+  // for (let i = 0; i < newStr.length / 2; i += 1) {
+  //   for (let j = 0; j < brackets.length; j += 1) {
+  //     if (str.includes(brackets[j])) {
+  //       newStr = str.replace(brackets[j], '');
+  //     }
+  //   }
+  // }
+  // return newStr === '';
   throw new Error('Not implemented');
 }
 
@@ -402,8 +422,8 @@ function isBracketsBalanced(/* str */) {
  *    365, 4  => '11231'
  *    365, 10 => '365'
  */
-function toNaryString(/* num, n */) {
-  throw new Error('Not implemented');
+function toNaryString(num, n) {
+  return +num.toString(n);
 }
 
 
@@ -420,6 +440,18 @@ function toNaryString(/* num, n */) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(/* pathes */) {
+  // let array = pathes.map((item) => {
+  //   return item.split('/');
+  // });
+  // let result = '';
+  // for (let i = 0; i < array[0].length; i += 1) {
+  //   let elem = array[0][i];
+  //   if (elem === array[i][0]) {
+  //     result += elem;
+  //   } else {
+  //     break;
+  //   }
+  // }
   throw new Error('Not implemented');
 }
 
@@ -478,6 +510,20 @@ function getMatrixProduct(/* m1, m2 */) {
  *
  */
 function evaluateTicTacToePosition(/* position */) {
+  // let res;
+  // for (let i = 0; i < position.length; i += 1) {
+  //   if ((position[i][0] === position[i][1] === position[i][2])
+  //    || (position[i][0] === position[i + 1][0] === position[i + 2][0] && i === 0)
+  //     || (position[i][1] === position[i + 1][1] === position[i + 2][1] && i === 0)
+  //      || (position[i][2] === position[i + 1][2] === position[i + 2][2] && i === 0)) {
+  //     // res = position[i][0];
+  //     res = 'X';
+  //     break;
+  //   } else {
+  //     res = undefined;
+  //   }
+  // }
+  // return res;
   throw new Error('Not implemented');
 }
 
